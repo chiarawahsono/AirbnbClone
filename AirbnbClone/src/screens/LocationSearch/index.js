@@ -4,6 +4,7 @@ import styles from './styles';
 import searchResults from '../../../assets/data/search';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 const LocationSearchScreen = props => {
   const [inputText, setInputText] = useState('');
@@ -11,6 +12,17 @@ const LocationSearchScreen = props => {
 
   return (
     <View style={styles.container}>
+      <GooglePlacesAutocomplete
+        placeholder="Search"
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(data, details);
+        }}
+        query={{
+          key: 'AIzaSyBzHzcHRupfXyaO6g8S50dr6eWnx4IBpUI',
+          language: 'en',
+        }}
+      />
       <TextInput
         style={styles.textInput}
         placeholder="Where are you going?"
