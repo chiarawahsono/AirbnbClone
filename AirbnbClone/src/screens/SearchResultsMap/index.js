@@ -29,7 +29,7 @@ const SearchResultsMap = props => {
           />
         ))}
       </MapView>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View style={{position: 'absolute', bottom: 40}}>
         <PostCarouselItem post={places[0]} />
       </View>
     </View>
