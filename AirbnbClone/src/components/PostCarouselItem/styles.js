@@ -4,9 +4,8 @@ const styles = StyleSheet.create({
   container: {
     height: 120,
     padding: 5,
-    margin: 5,
   },
-  innterContainer: {
+  innerContainer: {
     flexDirection: 'row',
     backgroundColor: 'white',
     borderRadius: 10,
@@ -17,18 +16,17 @@ const styles = StyleSheet.create({
     height: '100%',
     aspectRatio: 1,
     resizeMode: 'cover',
-    borderRadius: 10,
   },
-  description: {
-    fontSize: 18,
-    lineHeight: 26,
-  },
+
   bedrooms: {
     marginVertical: 10,
     color: '#5b5b5b',
   },
+  description: {
+    fontSize: 15,
+  },
   prices: {
-    fontSize: 18,
+    fontSize: 15,
     marginVertical: 10,
   },
   oldPrice: {
@@ -41,7 +39,6 @@ const styles = StyleSheet.create({
   totalPrice: {
     color: '#5b5b5b',
     textDecorationLine: 'underline',
-    marginLeft: 5,
   },
 });
 

@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, FlatList} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarouselItem';
 import places from '../../../assets/data/feed';
+import Post from '../../components/PostCarouselItem';
 
 const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
