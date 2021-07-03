@@ -14,6 +14,15 @@ const SearchResultsMap = props => {
 
   const width = useWindowDimensions().width;
 
+  const viewConfig = useRef({itemVisiblePercentThreshold: 70});
+
+  const onViewChanged = useRef(({viewableItems}) => {
+    if (viewableItems.length > 0) {
+      const selectedPlace = viewableItems[0].item;
+      setSelectedPlaceId(selectedPlace.id);
+    }
+  });
+
   useEffect(() => {
     if (!selectedPlaceId || !flatlist) {
       return;
@@ -55,7 +64,8 @@ const SearchResultsMap = props => {
           snapToInterval={width - 60}
           snapToAlignment={'center'}
           decelerationRate={'fast'}
-          viewabilityConfig={{itemVissiblePercentThreshold: 70}}
+          viewabilityConfig={viewConfig.current}
+          onViewableItemsChanged={onViewChanged.current}
         />
       </View>
     </View>
