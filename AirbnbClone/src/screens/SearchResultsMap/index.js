@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, FlatList, useWindowDimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {Marker} from 'react-native-maps';
@@ -10,12 +10,16 @@ import Post from '../../components/PostCarouselItem';
 const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
 
+  const flatlist = useRef();
+
   const width = useWindowDimensions().width;
 
   useEffect(() => {
-    if (!selectedPlaceId) {
+    if (!selectedPlaceId || !flatlist) {
       return;
     } else {
+      const index = places.findIndex(place => place.id === selectedPlaceId);
+      flatlist.current.scrollToIndex({index});
       console.log('scroll to ' + selectedPlaceId);
       return () => {};
     }
@@ -43,6 +47,7 @@ const SearchResultsMap = props => {
       </MapView>
       <View style={{position: 'absolute', bottom: 10}}>
         <FlatList
+          ref={flatlist}
           data={places}
           renderItem={({item}) => <PostCarouselItem post={item} />}
           horizontal
