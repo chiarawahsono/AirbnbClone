@@ -55,6 +55,7 @@ const SearchResultsMap = props => {
           snapToInterval={width - 60}
           snapToAlignment={'center'}
           decelerationRate={'fast'}
+          viewabilityConfig={{itemVissiblePercentThreshold: 70}}
         />
       </View>
     </View>
