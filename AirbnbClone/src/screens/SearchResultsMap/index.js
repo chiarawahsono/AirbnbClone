@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, FlatList, useWindowDimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {Marker} from 'react-native-maps';
@@ -11,6 +11,15 @@ const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
 
   const width = useWindowDimensions().width;
+
+  useEffect(() => {
+    if (!selectedPlaceId) {
+      return;
+    } else {
+      console.log('scroll to ' + selectedPlaceId);
+      return () => {};
+    }
+  }, [selectedPlaceId]);
 
   return (
     <View style={{width: '100%', height: '100%'}}>
