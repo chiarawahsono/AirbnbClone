@@ -30,7 +30,7 @@ const SearchResultsMap = props => {
           />
         ))}
       </MapView>
-      <View style={{position: 'absolute', bottom: 40}}>
+      <View style={{position: 'absolute', bottom: 10}}>
         <FlatList
           data={places}
           renderItem={({item}) => <PostCarouselItem post={item} />}
