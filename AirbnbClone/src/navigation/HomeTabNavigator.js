@@ -20,8 +20,7 @@ const HomeTabNavigator = () => {
     <Tab.Navigator tabBarOptions={{activeTintColor: '#f15454'}}>
       <Tab.Screen
         name={'Explore'}
-        // component={ExploreNavigator}
-        component={PostPage}
+        component={ExploreNavigator}
         options={{
           tabBarIcon: ({color}) => (
             <Fontisto name="search" size={25} color={color} />
