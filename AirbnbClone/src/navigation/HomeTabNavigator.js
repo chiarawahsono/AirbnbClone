@@ -11,6 +11,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import SearchResultsTabNavigator from './SearchResultsTabNavigator';
 import SearchResultsMap from '../screens/SearchResultsMap';
+import PostPage from '../screens/PostScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ const HomeTabNavigator = () => {
       <Tab.Screen
         name={'Explore'}
         // component={ExploreNavigator}
-        component={SearchResultsMap}
+        component={PostPage}
         options={{
           tabBarIcon: ({color}) => (
             <Fontisto name="search" size={25} color={color} />
