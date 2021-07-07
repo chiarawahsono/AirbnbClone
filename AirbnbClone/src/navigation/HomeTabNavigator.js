@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TabActions} from '@react-navigation/native';
+import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
 import ExploreNavigator from './ExploreNavigator';
 
@@ -51,6 +52,16 @@ const HomeTabNavigator = () => {
       <Tab.Screen
         name={'Messages'}
         component={HomeScreen}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Feather name="message-square" size={25} color={color} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={'Profile'}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Feather name="message-square" size={25} color={color} />
