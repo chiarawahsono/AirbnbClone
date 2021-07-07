@@ -1,10 +1,25 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Pressable} from 'react-native';
+import {Auth} from 'aws-amplify';
 
 const Profile = () => {
+  const logout = () => {
+    Auth.signOut();
+  };
+
   return (
-    <View>
-      <Text>asdfhdslfdsikulf</Text>
+    <View
+      style={{
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Pressable
+        onPress={logout}
+        style={{width: 100, height: 40, backgroundColor: '#c3c3c3'}}>
+        <Text> Log out</Text>
+      </Pressable>
     </View>
   );
 };
