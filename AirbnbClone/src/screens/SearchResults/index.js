@@ -12,8 +12,6 @@ const SearchResultsScreen = () => {
     const fetchPosts = async () => {
       try {
         const postResult = await API.graphql(graphqlOperation(listPosts));
-        console.log(postResult);
-
         setPosts(postResult.data.listPosts.items);
       } catch (e) {
         console.log(e);
