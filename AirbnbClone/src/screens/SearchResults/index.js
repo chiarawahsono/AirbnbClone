@@ -6,18 +6,25 @@ import {listPosts} from '../../graphql/queries';
 import {API, graphqlOperation} from 'aws-amplify';
 
 const SearchResultsScreen = () => {
+  console.log('hello');
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const postsResult = await API.graphql(graphqlOperation(listPosts));
         console.log(postsResult);
-      } catch (e) {}
+
+        setPosts(postResult.data.listPosts.items);
+      } catch (e) {
+        console.log(e);
+      }
     };
-  });
+    fetchPosts();
+  }, []);
 
   return (
     <View>
-      <FlatList data={feed} renderItem={({item}) => <Post post={item} />} />
+      <FlatList data={posts} renderItem={({item}) => <Post post={item} />} />
     </View>
   );
 };
