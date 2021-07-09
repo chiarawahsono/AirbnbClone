@@ -11,8 +11,8 @@ const SearchResultsScreen = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsResult = await API.graphql(graphqlOperation(listPosts));
-        console.log(postsResult);
+        const postResult = await API.graphql(graphqlOperation(listPosts));
+        console.log(postResult);
 
         setPosts(postResult.data.listPosts.items);
       } catch (e) {
