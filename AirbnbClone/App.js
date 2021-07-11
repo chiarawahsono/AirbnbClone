@@ -12,8 +12,6 @@ import {withAuthenticator} from 'aws-amplify-react-native';
 
 import Router from './src/navigation/router';
 
-//1.18.51
-
 const App = () => {
   return <Router />;
 };

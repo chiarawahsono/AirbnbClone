@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Pressable} from 'react-native';
 import styles from './styles';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const GuestsScreen = () => {
   const [adults, setAdults] = useState(0);
@@ -86,10 +86,7 @@ const GuestsScreen = () => {
               params: {
                 screen: 'SearchResults',
                 params: {
-                  screen: 'list',
-                  params: {
-                    guests: adults + children,
-                  },
+                  guests: adults + children,
                 },
               },
             })

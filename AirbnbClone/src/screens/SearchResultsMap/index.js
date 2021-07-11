@@ -7,8 +7,11 @@ import PostCarouselItem from '../../components/PostCarouselItem';
 import Post from '../../components/PostCarouselItem';
 import {listPosts} from '../../graphql/queries';
 import {API, graphqlOperation} from 'aws-amplify';
+import {useRoute} from '@react-navigation/native';
 
 const SearchResultsMap = props => {
+  const {guests} = props;
+  console.log('props', props);
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
   const [posts, setPosts] = useState([]);
 
@@ -23,7 +26,15 @@ const SearchResultsMap = props => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postResult = await API.graphql(graphqlOperation(listPosts));
+        const postResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          }),
+        );
         setPosts(postResult.data.listPosts.items);
       } catch (e) {
         console.log(e);
