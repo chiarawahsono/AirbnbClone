@@ -4,10 +4,13 @@ import Post from '../../components/Post';
 import feed from '../../../assets/data/feed';
 import {listPosts} from '../../graphql/queries';
 import {API, graphqlOperation} from 'aws-amplify';
+import {useRoute} from '@react-navigation/native';
 
 const SearchResultsScreen = () => {
-  console.log('hello');
   const [posts, setPosts] = useState([]);
+  const route = useRoute();
+  console.log(route.params);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
