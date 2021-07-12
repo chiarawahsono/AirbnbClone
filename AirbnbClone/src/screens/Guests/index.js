@@ -9,6 +9,8 @@ const GuestsScreen = () => {
   const [infants, setInfants] = useState(0);
 
   const navigation = useNavigation();
+
+  const route = useRoute();
   return (
     <View style={{justifyContent: 'space-between', height: '100%'}}>
       <View>
@@ -87,6 +89,7 @@ const GuestsScreen = () => {
                 screen: 'SearchResults',
                 params: {
                   guests: adults + children,
+                  viewport: route.params.viewport,
                 },
               },
             })

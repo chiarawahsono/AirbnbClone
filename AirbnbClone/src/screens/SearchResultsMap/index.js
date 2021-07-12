@@ -10,10 +10,9 @@ import {API, graphqlOperation} from 'aws-amplify';
 import {useRoute} from '@react-navigation/native';
 
 const SearchResultsMap = props => {
-  const {guests} = props;
-  console.log('props', props);
+  const {posts} = props;
+
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
-  const [posts, setPosts] = useState([]);
 
   const flatlist = useRef();
 
@@ -22,26 +21,6 @@ const SearchResultsMap = props => {
   const width = useWindowDimensions().width;
 
   const viewConfig = useRef({itemVisiblePercentThreshold: 70});
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postResult = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: {
-              maxGuests: {
-                ge: guests,
-              },
-            },
-          }),
-        );
-        setPosts(postResult.data.listPosts.items);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchPosts();
-  }, []);
 
   const onViewChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
